@@ -106,15 +106,15 @@ class SortingRobot:
 			self.set_light_off()				# but immediately turn it off, as a base case
 
 			while self.can_move_right():		# general in-place movement:
-				self.swap_item()				#	if able to move right, swap cards / items,
+				self.swap_item()				#	if can move right (not at end of array), swap items,
 				self.move_right()				#	and move right
     
 				if self.compare_item() == 1:	# compare 'held' item to next item, 
-					self.swap_item()			#	if it's larger ( == 1), swap,
+					self.swap_item()			#	if item is larger ( == 1), swap,
 					self.set_light_on()			#	turn light on (so base case fails / can keep running),
 					self.move_left()			#	move left,
-					self.swap_item()			#	swap item with that left item,
-					self.move_right()			#	move right again
+					self.swap_item()			#	swap held item with that left item,
+					self.move_right()			#	move back to original position
 
 				else:							# otherwise, it's assumed item is not larger
 					self.move_left()			#	so move left,
